@@ -4,27 +4,22 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Configuración de la base de datos
 const db = mysql.createConnection({
     host: "localhost",
-    user: "root", // Cambia esto según tu configuración
+    user: "root", 
     password: "root",
     database: "bdnoder",
 });
 
-// Conectar a la base de datos
 db.connect((err) => {
     if (err) throw err;
     console.log("Conectado a la base de datos MySQL");
 });
 
-// Rutas CRUD
 
-// Obtener todos los usuarios
 
 app.get("/api/producto", (req, res) => {
     const sql = "SELECT * FROM producto";
@@ -33,6 +28,7 @@ app.get("/api/producto", (req, res) => {
         res.send(result);
     });
 });
+
 // Crear un nuevo usuario
 app.post("/api/producto", (req, res) => {
     const { nombre, precio, cantidad } = req.body;
